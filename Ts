@@ -1,0 +1,218 @@
+// Seleciona o formulário e adiciona um ouvinte de evento de envio
+const form = document.querySelector("#myForm");
+form.addEventListener("submit", handleSubmit);
+
+// Manipulador de evento de envio do formulário
+function handleSubmit(event) {
+  event.preventDefault(); // Previne o envio do formulário
+
+  // Obtém os valores dos campos de entrada
+  const name = document.querySelector("#name").value;
+  const email = document.querySelector("#email").value;
+
+  // Salva os dados no banco de dados
+  saveData(name, email);
+
+  // Limpa o formulário
+  form.reset();
+}
+
+// Função para salvar os dados no banco de dados
+function saveData(name, email) {
+  // Abre o banco de dados (cria-o se não existir)
+  const db = openDatabase("myDatabase", "1.0", "My Database", 1 * 1024 * 1024);
+
+  // Cria a tabela se ainda não existir
+  db.transaction(function(tx) {
+    tx.executeSql(
+      "CREATE TABLE IF NOT EXISTS users (name, email)"
+    );
+  });
+
+  // Insere os dados na tabela
+  db.transaction(function(tx) {
+    tx.executeSql(
+      "INSERT INTO users (name, email) VALUES (?, ?)",
+      [name, email]
+    );
+  });
+
+  // Exibe os dados na página
+  displayData();
+}
+
+// Função para exibir os dados na página
+function displayData() {
+  // Seleciona a lista de itens
+  const list = document.querySelector("#myList");
+
+  // Limpa a lista
+  list.innerHTML = "";
+
+  // Abre o banco de dados
+  const db = openDatabase("myDatabase", "1.0", "My Database", 1 * 1024 * 1024);
+
+  // Seleciona todos os itens da tabela
+  db.transaction(function(tx) {
+    tx.executeSql(
+      "SELECT * FROM users",
+      [],
+      function(tx, result) {
+        // Adiciona cada item à lista
+        for (let i = 0; i < result.rows.length; i++) {
+          const item = result.rows.item(i);
+          const li = document.createElement("li");
+          li.textContent = `${item.name} (${item.email})`;
+          list.appendChild}
+          // Seleciona o formulário e adiciona um ouvinte de evento de envio
+const form = document.querySelector("#myForm");
+form.addEventListener("submit", handleSubmit);
+
+// Manipulador de evento de envio do formulário
+function handleSubmit(event) {
+  event.preventDefault(); // Previne o envio do formulário
+
+  // Obtém os valores dos campos de entrada
+  const name = document.querySelector("#name").value;
+  const email = document.querySelector("#email").value;
+
+  // Salva os dados no banco de dados
+  saveData(name, email);
+
+  // Limpa o formulário
+  form.reset();
+}
+
+// Função para salvar os dados no banco de dados
+function saveData(name, email) {
+  // Abre o banco de dados (cria-o se não existir)
+  const db = openDatabase("myDatabase", "1.0", "My Database", 1 * 1024 * 1024);
+
+  // Cria a tabela se ainda não existir
+  db.transaction(function(tx) {
+    tx.executeSql(
+      "CREATE TABLE IF NOT EXISTS users (name, email)"
+    );
+  });
+
+  // Insere os dados na tabela
+  db.transaction(function(tx) {
+    tx.executeSql(
+      "INSERT INTO users (name, email) VALUES (?, ?)",
+      [name, email]
+    );
+  });
+
+  // Exibe os dados na página
+  displayData();
+}
+
+// Função para exibir os dados na página
+function displayData() {
+  // Seleciona a lista de itens
+  const list = document.querySelector("#myList");
+
+  // Limpa a lista
+  list.innerHTML = "";
+
+  // Abre o banco de dados
+  const db = openDatabase("myDatabase", "1.0", "My Database", 1 * 1024 * 1024);
+
+  // Seleciona todos os itens da tabela
+  db.transaction(function(tx) {
+    tx.executeSql(
+      "SELECT * FROM users",
+      [],
+      function(tx, result) {
+        // Adiciona cada item à lista
+        for (let i = 0; i < result.rows.length; i++) {
+          const item = result.rows.item(i);
+          const li = document.createElement("li");
+          li.textContent = `${item.name} (${item.email})`;
+          list.appendChild(li);
+        }
+      }
+    );
+  });
+}
+
+// Seleciona o formulário e adiciona um ouvinte de evento de envio
+const form = document.querySelector("#myForm");
+form.addEventListener("submit", handleSubmit);
+
+// Manipulador de evento de envio do formulário
+function handleSubmit(event) {
+  event.preventDefault(); // Previne o envio do formulário
+
+  // Obtém os valores dos campos de entrada
+  const name = document.querySelector("#name").value;
+  const email = document.querySelector("#email").value;
+
+  // Salva os dados no banco de dados
+  saveData(name, email);
+
+  // Limpa o formulário
+  form.reset();
+}
+
+// Função para salvar os dados no banco de dados
+function saveData(name, email) {
+  // Abre o banco de dados (cria-o se não existir)
+  const db = openDatabase("myDatabase", "1.0", "My Database", 1 * 1024 * 1024);
+
+  // Cria a tabela se ainda não existir
+  db.transaction(function(tx) {
+    tx.executeSql(
+      "CREATE TABLE IF NOT EXISTS users (name, email)"
+    );
+  });
+
+  // Insere os dados na tabela
+  db.transaction(function(tx) {
+    tx.executeSql(
+      "INSERT INTO users (name, email) VALUES (?, ?)",
+      [name, email]
+    );
+  });
+
+  // Exibe os dados na página
+  displayData();
+}
+
+// Função para exibir os dados na página
+function displayData() {
+  // Seleciona a lista de itens
+  const list = document.querySelector("#myList");
+
+  // Limpa a lista
+  list.innerHTML = "";
+
+  // Abre o banco de dados
+  const db = openDatabase("myDatabase", "1.0", "My Database", 1 * 1024 * 1024);
+
+  // Seleciona todos os itens da tabela
+  db.transaction(function(tx) {
+    tx.executeSql(
+      "SELECT * FROM users",
+      [],
+      function(tx, result) {
+        // Adiciona cada item à lista
+        for (let i = 0; i < result.rows.length; i++) {
+          const item = result.rows.item(i);
+          const li = document.createElement("li");
+          li.textContent = `${item.name} (${item.email})`;
+          list.appendChild
+          class Person {
+    private name: string;
+  
+    constructor(name: string) {
+      this.name = name;
+    }
+  
+    public greet() {
+      console.log(`Hello, my name is ${this.name}!`);
+    }
+  }
+  
+  const person = new Person("John");
+  person.greet();
